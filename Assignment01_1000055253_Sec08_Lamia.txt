@@ -1,0 +1,114 @@
+﻿//Assignmenttask01
+//Complete this method so that it gives the Expected Output
+    //YOU ONLY HAVE TO SUBMIT THIS METHOD, NO OTHER DRIVER CODE
+    public static Integer rowRotation( Integer examWeek, String[][] matrix ){
+
+
+        //For this task you don't need to create new Matrix
+        int row= matrix.length;
+        int col= matrix[0].length;
+        int rotate = examWeek-1;
+        for (int k=0;k<rotate;k++){
+            String[]lastrow= matrix[row-1];
+            for (int i=row-1;i>0;i--){
+                matrix[i]=matrix[i-1];
+            }
+            matrix[0]=lastrow;
+        }
+       
+        for (int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if (matrix[i][j].length()==1){
+                System.out.print("| " + matrix[i][j]+" ");    
+                }
+                else {
+                System.out.print("| " + matrix[i][j]+" ");
+                }
+
+
+            }
+            System.out.println(" |");
+        }
+        for (int i =0;i<row;i++){
+            for (int j=0;j<col;j++){
+                if (matrix[i][j].equals ("AA")){
+                    return i+1;
+                }
+            }
+        }
+        return -1;
+}           
+
+
+//Assignmenttask02
+ public static Integer[][] compressMatrix( Integer[][] matrix ){
+
+
+        //For this task you'll need to create new 2D array
+       
+        int row = matrix.length/2;
+        int cols = matrix[0].length/2;
+        Integer[][]compmatrix = new Integer[row][cols];
+       
+        for (int i=0; i<row;i++){
+            for (int j=0; j<cols;j++){
+        int m= i*2;
+        int n =j*2;
+        compmatrix[i][j]= matrix[m][n]+
+                          matrix [m+1][n]+
+                          matrix[m][n+1]+
+                          matrix [m+1][n+1];
+            }
+}
+
+
+   
+   
+        //remove the line below and return the newly created Compressed 2D matrix
+        return compmatrix;
+    }
+
+
+
+
+//Assignmenttask03
+
+
+public static void playGame( Integer[][] arena ){
+
+
+        //For this task you don't need to create any new 2D array
+        //just print the result inside the function
+        int row= arena.length;
+        int cols = arena[0].length;
+        int total=0;
+        for(int i=0;i<row;i++){
+          for (int j=0; j<cols ; j++){
+          if( arena[i][j]%50==0&& arena[i][j]!=0){
+              int count =0;
+              if(i>0&& arena[i-1][j]==2){
+                  count++;
+                }
+              if ( i<row-1&& arena[i+1][j]==2){
+                count++;
+              }
+              if(j>0&& arena[i][j-1]==2){
+                count++;
+              }
+                 if(j<cols-1&&arena[i][j+1]==2){
+                   count++;
+                 }
+                 total+=(count*2);
+                 }
+}
+}
+      if(total>=10){
+  System.out.println( "points Gained:"+ total+"your team has survived the game .");
+      }
+  else{
+    System.out.println( "points Gained:"+ total+"Your team is out.");
+   
+    }
+                 
+        //TO DO
+    }
